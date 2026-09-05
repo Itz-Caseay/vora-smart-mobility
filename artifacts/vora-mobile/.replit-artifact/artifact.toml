@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "VORA Smart Mobility"
+description = "A Cameroon-first smart mobility app that helps riders find safer, more affordable, and more practical ways to move through the city, from destination search and route planning through booking, live tracking, safety, and trip rating."
+version = "1.0.0"
+id = "artifacts/vora-mobile"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 25269
+
+[services.development]
+run = "pnpm --filter @workspace/vora-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/vora-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/vora-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "25269"
+BASE_PATH = "/"
